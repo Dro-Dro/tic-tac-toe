@@ -19,3 +19,13 @@ fps = 30
 CLOCK = pg.time.Clock()
 screen = pg.display.set_mode((width, width + 100), 0, 32)
 pg.display.set_caption("Tic Tac Toe!")
+
+#loading images
+opening = pg.image.load('tic tac opening.png')
+x_img = pg.image.load('x.png')
+o_img = pg.image.load('o.png')
+
+#resizing images to window
+x_img = pg.transform.scale(x_img, (80,80))
+o_img = pg.transform.scale(o_img, (80,80))
+opening = pg.transform.scale(opening, (width, width + 100))

@@ -83,3 +83,15 @@ def check_win() :
             #draw line through winning col
             pg.draw.line(screen, (250, 0, 0), ((col + 1) * width / 3 - width / 6, 0), ((col + 1) * width / 3 - width / 6, width), 4)
             break
+
+    #check for any winning diagonal
+    if ((TTT[0][0] == TTT[1][1] == TTT[2][2]) and (TTT[0][0] is not None)) :
+        #winning left to right diagonal
+        winner = TTT[0][0]
+        #draw line through winning diagonal
+        pg.draw.line(screen, (250, 70, 70), (50, 50), (350, 350), 4)
+    elif ((TTT[0][2] == TTT[1][1] == TTT[2][0]) and (TTT[0][2] is not None)) :
+        #winning right to left diagonal
+        winner = TTT[0][2]
+        #draw line through winning diagonal
+        pg.draw.line(screen, (250, 70, 70), (350, 50), (50, 350), 4)

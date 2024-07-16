@@ -71,5 +71,15 @@ def check_win() :
         if ((TTT[row][0] == TTT[row][1] == TTT[row][2]) and (TTT[row][0] is not None)):
             #winning row found
             winner = TTT[row][0]
+            #draw line through winning row
             pg.draw.line(screen, (250, 0, 0), (0, (row + 1) * width / 3 - width / 6), (width, (row + 1) * width / 3 - width / 6 ), 4)
+            break
+
+    #check for any winning columns
+    for col in range (0, 3):
+        if ((TTT[0][col] == TTT[1][col] == TTT[2][col]) and (TTT[0][col] is not None)):
+            #winning col found
+            winner = TTT[0][col]
+            #draw line through winning col
+            pg.draw.line(screen, (250, 0, 0), ((col + 1) * width / 3 - width / 6, 0), ((col + 1) * width / 3 - width / 6, width), 4)
             break

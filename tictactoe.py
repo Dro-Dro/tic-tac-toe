@@ -95,3 +95,8 @@ def check_win() :
         winner = TTT[0][2]
         #draw line through winning diagonal
         pg.draw.line(screen, (250, 70, 70), (350, 50), (50, 350), 4)
+    
+    #check for draw
+    if (all ([all(row) for row in TTT]) and winner is None) :
+        draw = True
+    draw_status()

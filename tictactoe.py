@@ -37,7 +37,7 @@ def game_opening() :
     screen.fill(white)
 
     #draws vertical lines for board
-    pg.draw.line(screen, line_color, (width / 3, width), 7)
+    pg.draw.line(screen, line_color, (width / 3, 0), (width / 3, width), 7)
     pg.draw.line(screen, line_color, (width / 3 * 2, 0), (width / 3 * 2, width), 7)
     #draws horizontal lines for board
     pg.draw.line(screen, line_color, (0, width / 3), (width, width / 3), 7)
@@ -136,21 +136,21 @@ def userClick() :
     x, y = pg.mouse.get_pos()
 
     #gets column aka y coordinate of mouse click
-    if (y < width / 3) :
+    if (x < width / 3) :
         col = 1
-    elif (y < width / 3 * 2) :
+    elif (x < width / 3 * 2) :
         col = 2
-    elif (y < width) :
+    elif (x < width) :
         col = 3
     else :
         col = None
     
     #gets row aka x coordinate of mouse click
-    if (x < width / 3) :
+    if (y < width / 3) :
         row = 1
-    elif (x < width / 3 * 2) :
+    elif (y < width / 3 * 2) :
         row = 2
-    elif (x < width) :
+    elif (y < width) :
         row = 3
     else :
         row = None
@@ -171,3 +171,20 @@ def reset_game() :
     game_opening()
     winner = None
     TTT = [[None] * 3, [None] * 3, [None] * 3]
+
+#running the game
+game_opening()
+
+#run game loop forever
+while(True) :
+    for event in pg.event.get() :
+        if event.type == QUIT :
+            pg.quit()
+            sys.exit()
+        elif event.type == MOUSEBUTTONDOWN :
+            #user clicked on screen
+            userClick()
+            if (winner or draw) :
+                reset_game()
+    pg.display.update()
+    CLOCK.tick(fps)

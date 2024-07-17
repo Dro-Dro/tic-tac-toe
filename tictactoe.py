@@ -47,11 +47,12 @@ def game_opening() :
 def draw_status() :
     global draw, white
 
-    if winner is None:
+    #messages for win/lose/draw states
+    if winner is None :
         message = XO.upper() + "'s Turn"
-    elif draw:
+    elif draw :
         message = 'Game Draw!'
-    else:
+    else :
         message = winner.upper() + " won!"
 
     font = pg.font.Font(None, 30)
@@ -67,8 +68,8 @@ def check_win() :
     global TTT, winner, draw
 
     #check for any winning rows
-    for row in range (0, 3):
-        if ((TTT[row][0] == TTT[row][1] == TTT[row][2]) and (TTT[row][0] is not None)):
+    for row in range (0, 3) :
+        if ((TTT[row][0] == TTT[row][1] == TTT[row][2]) and (TTT[row][0] is not None)) :
             #winning row found
             winner = TTT[row][0]
             #draw line through winning row
@@ -76,8 +77,8 @@ def check_win() :
             break
 
     #check for any winning columns
-    for col in range (0, 3):
-        if ((TTT[0][col] == TTT[1][col] == TTT[2][col]) and (TTT[0][col] is not None)):
+    for col in range (0, 3) :
+        if ((TTT[0][col] == TTT[1][col] == TTT[2][col]) and (TTT[0][col] is not None)) :
             #winning col found
             winner = TTT[0][col]
             #draw line through winning col
